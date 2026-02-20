@@ -33,6 +33,38 @@
   --shadow-pressed:
     inset 5px 5px 10px rgba(0, 0, 0, 0.16),
     inset -4px -4px 10px rgba(255, 255, 255, 0.7);
+  --page-glow-a: #f9fbff;
+  --page-glow-b: #edf3ff;
+  --page-gradient: linear-gradient(150deg, var(--bg-soft), var(--bg-base));
+}
+
+:root[data-theme="dark"] {
+  --bg-base: #0c1528;
+  --bg-soft: #111f36;
+  --surface: #18233d;
+  --surface-muted: #1a2946;
+  --surface-strong: #22345a;
+  --text-main: #dde8ff;
+  --text-muted: #9aa9c7;
+  --accent: #d7e4ff;
+  --accent-strong: #f4f8ff;
+  --success-bg: #103628;
+  --error-bg: #4d1f29;
+  --shadow-outer:
+    14px 14px 26px rgba(0, 0, 0, 0.34),
+    -8px -8px 18px rgba(255, 255, 255, 0.05);
+  --shadow-soft:
+    10px 10px 20px rgba(0, 0, 0, 0.3),
+    -6px -6px 14px rgba(255, 255, 255, 0.04);
+  --shadow-inset:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.36),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.06);
+  --shadow-pressed:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.42),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.08);
+  --page-glow-a: rgba(99, 146, 255, 0.18);
+  --page-glow-b: rgba(61, 110, 214, 0.14);
+  --page-gradient: linear-gradient(150deg, #0a111f, #14233f);
 }
 
 * {
@@ -43,12 +75,15 @@ body {
   margin: 0;
   font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at 12% 8%, #f9fbff 0%, rgba(249, 251, 255, 0) 33%),
-    radial-gradient(circle at 88% 14%, #edf3ff 0%, rgba(237, 243, 255, 0) 34%),
-    linear-gradient(150deg, var(--bg-soft), var(--bg-base));
+    radial-gradient(circle at 12% 8%, var(--page-glow-a) 0%, rgba(249, 251, 255, 0) 33%),
+    radial-gradient(circle at 88% 14%, var(--page-glow-b) 0%, rgba(237, 243, 255, 0) 34%),
+    var(--page-gradient);
   color: var(--text-main);
   min-height: 100vh;
   letter-spacing: 0.01em;
+  transition:
+    color 500ms ease-in-out,
+    background 500ms ease-in-out;
 }
 
 a {
@@ -248,6 +283,58 @@ a {
 .status-error {
   background: var(--error-bg);
   color: #991b1b;
+}
+
+:root[data-theme="dark"] .skeuo-nav,
+:root[data-theme="dark"] .skeuo-dropdown,
+:root[data-theme="dark"] .skeuo-banner,
+:root[data-theme="dark"] .skeuo-shell,
+:root[data-theme="dark"] .skeuo-surface,
+:root[data-theme="dark"] .skeuo-surface-soft,
+:root[data-theme="dark"] .skeuo-card,
+:root[data-theme="dark"] .skeuo-card-inset,
+:root[data-theme="dark"] .skeuo-icon-well {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, #1b2a48, #111c32);
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+}
+
+:root[data-theme="dark"] .skeuo-btn-secondary,
+:root[data-theme="dark"] .skeuo-btn-ghost,
+:root[data-theme="dark"] .skeuo-chip {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(155deg, #23385e, #16253f);
+  color: #dfe9ff;
+}
+
+:root[data-theme="dark"] .skeuo-input {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, #1b2a46, #111f38);
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .text-slate-500,
+:root[data-theme="dark"] .text-slate-600,
+:root[data-theme="dark"] .text-slate-700,
+:root[data-theme="dark"] .text-slate-800,
+:root[data-theme="dark"] .text-slate-900 {
+  color: #d9e5ff !important;
+}
+
+:root[data-theme="dark"] .text-slate-200,
+:root[data-theme="dark"] .text-slate-100 {
+  color: #f8fbff !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-slate-200\/70:hover,
+:root[data-theme="dark"] .hover\:bg-slate-200:hover {
+  background-color: rgba(148, 163, 184, 0.22) !important;
+}
+
+:root[data-theme="dark"] .hover\:text-slate-950:hover,
+:root[data-theme="dark"] .hover\:text-slate-900:hover {
+  color: #ffffff !important;
 }
 
 @media (max-width: 640px) {

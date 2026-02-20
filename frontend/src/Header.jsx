@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./components/ThemeToggle";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,6 +82,8 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+
           <Link to="/login">
             <button className="skeuo-btn skeuo-btn-primary px-4 py-2 text-sm text-white">
               Login
@@ -145,6 +148,10 @@ function Header() {
             <Link to="/resources" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>Resources</Link>
             <Link to="/contact" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <Link to="/about" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <div className="skeuo-card-inset mt-1 w-full p-3">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Theme</p>
+              <ThemeToggle className="mx-auto" />
+            </div>
 
             <div className="skeuo-divider flex w-full flex-col gap-3 pt-4">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>

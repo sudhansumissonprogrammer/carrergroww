@@ -16,32 +16,35 @@ import ResourcesArticles from "./ResourcesArticles";
 import ResourcesVideos from "./ResourcesVideos";
 import Header from "./Header"; 
 import { JobSearchProvider } from "./JobSearchContext";
+import { ThemeProvider } from "./theme/ThemeContext";
 
 function App() {
   return (
-    <JobSearchProvider>
-      <BrowserRouter>
-        <Header />
-        <div className="pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/jobs/:jobId" element={<JobDetails />} />
-            <Route path="/companies" element={<Companies />} />
-            <Route path="/resources" element={<Resources />}>
-              <Route index element={<ResourcesIndex />} />
-              <Route path="articles" element={<ResourcesArticles />} />
-              <Route path="videos" element={<ResourcesVideos />} />
-            </Route>
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </JobSearchProvider>
+    <ThemeProvider>
+      <JobSearchProvider>
+        <BrowserRouter>
+          <Header />
+          <div className="pt-20">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/jobs/:jobId" element={<JobDetails />} />
+              <Route path="/companies" element={<Companies />} />
+              <Route path="/resources" element={<Resources />}>
+                <Route index element={<ResourcesIndex />} />
+                <Route path="articles" element={<ResourcesArticles />} />
+                <Route path="videos" element={<ResourcesVideos />} />
+              </Route>
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </JobSearchProvider>
+    </ThemeProvider>
   );
 }
 

@@ -1,0 +1,189 @@
+.toggle {
+  --toggle-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --knob-x: 0px;
+  --toggle-bg: linear-gradient(135deg, #f7eec2 0%, #dbe9ff 50%, #b9d9ff 100%);
+  --toggle-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.15),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--toggle-bg);
+  box-shadow: var(--toggle-shadow);
+  transition:
+    background 500ms ease-in-out,
+    box-shadow 500ms var(--toggle-ease),
+    transform 180ms var(--toggle-ease);
+  will-change: transform, background, box-shadow;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.12));
+  pointer-events: none;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: -35%;
+  left: -30%;
+  width: 65%;
+  height: 165%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+  transform: rotate(22deg);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.toggle:hover {
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.25),
+    0 0 24px rgba(130, 185, 255, 0.28),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.15),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.18);
+}
+
+.toggle:active {
+  transform: scale(0.96);
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.2),
+    0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.dark {
+  --knob-x: 34px;
+  --toggle-bg: linear-gradient(135deg, #090f21 0%, #111f3f 52%, #1f2f58 100%);
+  --toggle-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.34),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.12),
+    inset 3px 3px 8px rgba(0, 0, 0, 0.26);
+}
+
+.glowSweep {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.4) 48%, transparent 75%);
+}
+
+.animateSweep {
+  animation: sweep 620ms var(--toggle-ease) both;
+}
+
+.knob {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  transform: translateX(var(--knob-x));
+  transition:
+    transform 500ms var(--toggle-ease),
+    background 500ms ease-in-out,
+    box-shadow 500ms ease-in-out;
+  background: linear-gradient(160deg, #ffffff 0%, #ecf6ff 60%, #d6e6ff 100%);
+  box-shadow:
+    0 8px 14px rgba(0, 0, 0, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(150, 175, 205, 0.34);
+  will-change: transform, box-shadow;
+}
+
+.dark .knob {
+  background: linear-gradient(160deg, #e8f0ff 0%, #c3d8ff 55%, #8cb3ff 100%);
+}
+
+.knobGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0.35;
+  background: radial-gradient(circle, rgba(154, 202, 255, 0.85) 0%, rgba(120, 170, 255, 0) 72%);
+  transition: opacity 500ms ease-in-out;
+}
+
+.dark .knobGlow {
+  opacity: 0.75;
+}
+
+.iconWrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: #f59e0b;
+  transition:
+    transform 500ms var(--toggle-ease),
+    opacity 500ms var(--toggle-ease),
+    color 500ms ease-in-out,
+    filter 500ms ease-in-out;
+  filter: drop-shadow(0 0 6px rgba(253, 186, 116, 0.75));
+}
+
+.iconSun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.iconMoon {
+  opacity: 0;
+  transform: scale(0.65) rotate(-42deg);
+  color: #c7d2fe;
+  filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.6));
+}
+
+.dark .iconSun {
+  opacity: 0;
+  transform: scale(0.6) rotate(46deg);
+}
+
+.dark .iconMoon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.animateIcon {
+  animation: iconPulse 560ms var(--toggle-ease) both;
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(140%);
+  }
+}
