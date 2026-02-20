@@ -5,13 +5,254 @@
   --color-primary: #111827;
 }
 
+:root {
+  --bg-base: #e7ebf2;
+  --bg-soft: #f4f6fb;
+  --surface: #edf1f7;
+  --surface-muted: #e6ebf4;
+  --surface-strong: #dce4f0;
+  --text-main: #141a25;
+  --text-muted: #556074;
+  --accent: #1f2a3d;
+  --accent-strong: #111826;
+  --success-bg: #d8f5e8;
+  --error-bg: #fee2e2;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --duration: 240ms;
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --shadow-outer:
+    11px 11px 24px rgba(0, 0, 0, 0.15),
+    -9px -9px 22px rgba(255, 255, 255, 0.7);
+  --shadow-soft:
+    8px 8px 16px rgba(0, 0, 0, 0.12),
+    -6px -6px 14px rgba(255, 255, 255, 0.68);
+  --shadow-inset:
+    inset 3px 3px 7px rgba(0, 0, 0, 0.13),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.72);
+  --shadow-pressed:
+    inset 5px 5px 10px rgba(0, 0, 0, 0.16),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.7);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-  background: #efefef;
-  color: #121826;
+  font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%, #f9fbff 0%, rgba(249, 251, 255, 0) 33%),
+    radial-gradient(circle at 88% 14%, #edf3ff 0%, rgba(237, 243, 255, 0) 34%),
+    linear-gradient(150deg, var(--bg-soft), var(--bg-base));
+  color: var(--text-main);
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: inherit;
+}
+
+.skeuo-page {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-main);
+}
+
+.skeuo-shell {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  background: linear-gradient(154deg, #f7f9fd, var(--surface));
+  box-shadow: var(--shadow-outer);
+}
+
+.skeuo-surface {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(158deg, #f5f8fe, var(--surface));
+  box-shadow: var(--shadow-outer);
+}
+
+.skeuo-surface-soft {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: linear-gradient(160deg, #f5f8ff, var(--surface-muted));
+  box-shadow: var(--shadow-soft);
+}
+
+.skeuo-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background: linear-gradient(154deg, #f9fbff, #e9eef7);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--duration) var(--ease-standard),
+    box-shadow var(--duration) var(--ease-standard);
+}
+
+.skeuo-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    12px 12px 20px rgba(0, 0, 0, 0.14),
+    -10px -10px 18px rgba(255, 255, 255, 0.74);
+}
+
+.skeuo-card-inset {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(160deg, #e4eaf4, #f4f7fc);
+  box-shadow: var(--shadow-inset);
+}
+
+.skeuo-nav {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background: linear-gradient(150deg, rgba(252, 253, 255, 0.84), rgba(233, 239, 248, 0.88));
+  box-shadow:
+    10px 10px 24px rgba(0, 0, 0, 0.14),
+    -7px -7px 16px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+}
+
+.skeuo-dropdown {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(150deg, #f7f9ff, #e9eef8);
+  box-shadow: var(--shadow-soft);
+}
+
+.skeuo-btn {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-weight: 600;
+  transition:
+    transform var(--duration) var(--ease-standard),
+    box-shadow var(--duration) var(--ease-standard),
+    background var(--duration) var(--ease-standard),
+    color var(--duration) var(--ease-standard);
+  transform-origin: center;
+  box-shadow:
+    7px 7px 15px rgba(0, 0, 0, 0.15),
+    -5px -5px 12px rgba(255, 255, 255, 0.72);
+}
+
+.skeuo-btn:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.skeuo-btn:active {
+  transform: scale(0.97);
+  box-shadow: var(--shadow-pressed);
+}
+
+.skeuo-btn-primary {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(155deg, #2b3850, #151f2f);
+  color: #f8fafc;
+}
+
+.skeuo-btn-primary:hover {
+  background: linear-gradient(155deg, #26334a, #101826);
+}
+
+.skeuo-btn-secondary {
+  background: linear-gradient(160deg, #f8faff, #dfe6f3);
+  color: var(--text-main);
+}
+
+.skeuo-btn-ghost {
+  background: linear-gradient(160deg, #eef3fc, #dde6f4);
+  color: #243041;
+}
+
+.skeuo-input {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 0.72rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: linear-gradient(160deg, #e0e7f3, #f5f8ff);
+  box-shadow: var(--shadow-inset);
+  color: var(--text-main);
+  outline: none;
+  transition: box-shadow var(--duration) var(--ease-standard);
+}
+
+.skeuo-input::placeholder {
+  color: #6b7280;
+}
+
+.skeuo-input:focus {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.78),
+    0 0 0 2px rgba(56, 132, 255, 0.24);
+}
+
+.skeuo-chip {
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(160deg, #f6f9ff, #dfe8f5);
+  color: #334155;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--duration) var(--ease-standard);
+}
+
+.skeuo-chip[data-active="true"] {
+  border-color: rgba(255, 255, 255, 0.26);
+  background: linear-gradient(160deg, #2b3950, #151f2f);
+  color: #f8fafc;
+}
+
+.skeuo-chip:hover {
+  transform: translateY(-1px);
+}
+
+.skeuo-radio {
+  accent-color: #1f2937;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+.skeuo-icon-well {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(160deg, #f7f9ff, #e2eaf4);
+  box-shadow: var(--shadow-soft);
+}
+
+.skeuo-banner {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(145deg, rgba(249, 252, 255, 0.8), rgba(214, 225, 241, 0.82));
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+}
+
+.skeuo-text-muted {
+  color: var(--text-muted);
+}
+
+.skeuo-divider {
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.status-success {
+  background: var(--success-bg);
+  color: #14532d;
+}
+
+.status-error {
+  background: var(--error-bg);
+  color: #991b1b;
+}
+
+@media (max-width: 640px) {
+  .skeuo-btn {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
 }

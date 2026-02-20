@@ -54,7 +54,7 @@ function Companies() {
   };
 
   return (
-    <div className="min-h-screen bg-[#efefef] p-4 md:p-6">
+    <div className="skeuo-page p-4 md:p-6">
       <div className="mx-auto max-w-4xl">
         <h1 className="mb-2 text-xl font-bold text-slate-900">Companies</h1>
         <p className="mb-8 text-slate-600">
@@ -68,11 +68,8 @@ function Companies() {
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
-                  isActive
-                    ? "border-slate-900 bg-slate-900 text-white"
-                    : "border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
-                }`}
+                data-active={isActive}
+                className="skeuo-chip text-xs"
               >
                 {category}
               </button>
@@ -82,12 +79,12 @@ function Companies() {
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCompanies.map((company) => (
-            <div key={company.id} className="rounded-2xl border border-slate-200 bg-[#f8f8f8] p-3.5 shadow-sm">
+            <div key={company.id} className="skeuo-card p-3.5">
               <div className="mb-3 flex items-start justify-between">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white">
+                <div className="skeuo-icon-well flex h-9 w-9 items-center justify-center rounded-full">
                   <CompanyLogo src={company.logo} name={company.name} />
                 </div>
-                <button className="rounded-md border border-slate-300 bg-white px-2 py-0.5 text-[10px] font-medium text-slate-600">
+                <button className="skeuo-btn skeuo-btn-secondary rounded-md px-2 py-0.5 text-[10px] font-medium text-slate-600">
                   Save
                 </button>
               </div>
@@ -100,13 +97,13 @@ function Companies() {
 
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {company.tags.map((tag) => (
-                  <span key={tag} className="rounded-md bg-slate-200 px-2 py-0.5 text-[11px] text-slate-800">
+                  <span key={tag} className="skeuo-chip rounded-md px-2 py-0.5 text-[11px] text-slate-800">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-5 border-t border-slate-300 pt-2.5">
+              <div className="skeuo-divider mt-5 pt-2.5">
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="text-lg font-semibold text-slate-900">{company.openRoles} roles</p>
@@ -114,7 +111,7 @@ function Companies() {
                   </div>
                   <Link
                     to={`/jobs?category=${company.location === "Remote" ? "Remote" : "All"}`}
-                    className="rounded-md bg-black px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-slate-800"
+                    className="skeuo-btn skeuo-btn-primary rounded-md px-3 py-1.5 text-xs font-semibold text-white"
                   >
                     View jobs
                   </Link>
@@ -125,7 +122,7 @@ function Companies() {
         </div>
 
         {filteredCompanies.length === 0 && (
-          <div className="mt-4 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-600">
+          <div className="skeuo-surface mt-4 p-8 text-center text-slate-600">
             No demo companies found for this category.
           </div>
         )}

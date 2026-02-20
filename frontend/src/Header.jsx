@@ -20,10 +20,10 @@ function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-slate-300/80 bg-white/90 px-6 py-3 shadow-[0_6px_20px_rgba(15,23,42,0.08)] backdrop-blur-xl">
+    <header className="fixed left-0 right-0 top-0 z-50 px-4 pt-3">
+      <div className="skeuo-nav mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 font-bold text-white">
+          <div className="skeuo-icon-well flex h-9 w-9 items-center justify-center font-bold text-slate-900">
             C
           </div>
           <h2 className="text-xl font-bold tracking-tight">
@@ -31,16 +31,16 @@ function Header() {
           </h2>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
           <div className="relative group">
             <Link to="/jobs" className="transition hover:text-slate-950">Jobs</Link>
             <div className="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+              <div className="skeuo-dropdown p-2">
                 {jobMenu.map((item) => (
                   <Link
                     key={item.label}
                     to={item.to}
-                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
+                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-200/70 hover:text-slate-950"
                   >
                     {item.label}
                   </Link>
@@ -52,12 +52,12 @@ function Header() {
           <div className="relative group">
             <Link to="/companies" className="transition hover:text-slate-950">Companies</Link>
             <div className="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+              <div className="skeuo-dropdown p-2">
                 {companyMenu.map((item) => (
                   <Link
                     key={item.label}
                     to={item.to}
-                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
+                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-200/70 hover:text-slate-950"
                   >
                     {item.label}
                   </Link>
@@ -69,10 +69,10 @@ function Header() {
           <div className="relative group">
             <Link to="/resources" className="transition hover:text-slate-950">Resources</Link>
             <div className="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
-                <Link to="/resources" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">Overview</Link>
-                <Link to="/resources/articles" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">Articles</Link>
-                <Link to="/resources/videos" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950">Videos</Link>
+              <div className="skeuo-dropdown p-2">
+                <Link to="/resources" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-200/70 hover:text-slate-950">Overview</Link>
+                <Link to="/resources/articles" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-200/70 hover:text-slate-950">Articles</Link>
+                <Link to="/resources/videos" className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-200/70 hover:text-slate-950">Videos</Link>
               </div>
             </div>
           </div>
@@ -80,15 +80,15 @@ function Header() {
           <Link to="/about" className="transition hover:text-slate-950">About</Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden items-center gap-3 md:flex">
           <Link to="/login">
-            <button className="rounded-lg bg-slate-900 px-4 py-2 text-sm text-white transition hover:bg-black">
+            <button className="skeuo-btn skeuo-btn-primary px-4 py-2 text-sm text-white">
               Login
             </button>
           </Link>
 
           <Link to="/register">
-            <button className="rounded-lg bg-slate-900 px-4 py-2 text-sm text-white transition hover:bg-black">
+            <button className="skeuo-btn skeuo-btn-secondary px-4 py-2 text-sm">
               Register
             </button>
           </Link>
@@ -96,7 +96,7 @@ function Header() {
 
         {/* Hamburger Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-800 focus:outline-none">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="skeuo-btn skeuo-btn-secondary p-2 text-slate-800 focus:outline-none">
             {isMenuOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             ) : (
@@ -108,10 +108,10 @@ function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="mx-auto mt-2 max-w-7xl rounded-2xl border border-slate-200/70 bg-white/95 shadow-lg backdrop-blur-xl md:hidden">
+        <div className="skeuo-banner mx-auto mt-2 max-w-7xl md:hidden">
           <nav className="flex flex-col items-start gap-4 p-6 text-slate-700">
             <Link to="/jobs" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>Jobs</Link>
-            <div className="w-full rounded-lg bg-slate-50 p-3">
+            <div className="skeuo-card-inset w-full p-3">
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Job Categories</p>
               <div className="flex flex-wrap gap-2">
                 {jobMenu.map((item) => (
@@ -119,7 +119,7 @@ function Header() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setIsMenuOpen(false)}
-                    className="rounded-full bg-white px-3 py-1 text-xs text-slate-700 ring-1 ring-slate-200 hover:text-slate-950"
+                    className="skeuo-chip text-xs"
                   >
                     {item.label}
                   </Link>
@@ -127,7 +127,7 @@ function Header() {
               </div>
             </div>
             <Link to="/companies" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>Companies</Link>
-            <div className="w-full rounded-lg bg-slate-50 p-3">
+            <div className="skeuo-card-inset w-full p-3">
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Company Categories</p>
               <div className="flex flex-wrap gap-2">
                 {companyMenu.map((item) => (
@@ -135,7 +135,7 @@ function Header() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setIsMenuOpen(false)}
-                    className="rounded-full bg-white px-3 py-1 text-xs text-slate-700 ring-1 ring-slate-200 hover:text-slate-950"
+                    className="skeuo-chip text-xs"
                   >
                     {item.label}
                   </Link>
@@ -146,15 +146,15 @@ function Header() {
             <Link to="/contact" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <Link to="/about" className="hover:text-slate-950" onClick={() => setIsMenuOpen(false)}>About</Link>
 
-            <div className="w-full border-t pt-4 flex flex-col gap-3">
+            <div className="skeuo-divider flex w-full flex-col gap-3 pt-4">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                <button className="w-full rounded-lg bg-slate-900 px-4 py-2 text-sm text-white transition hover:bg-black">
+                <button className="skeuo-btn skeuo-btn-primary w-full px-4 py-2 text-sm text-white">
                   Login
                 </button>
               </Link>
 
               <Link to="/register" onClick={() => setIsMenuOpen(false)}>
-                <button className="w-full px-4 py-2 text-sm rounded-lg bg-slate-200 text-slate-800 hover:bg-slate-300 transition">
+                <button className="skeuo-btn skeuo-btn-secondary w-full px-4 py-2 text-sm">
                   Register
                 </button>
               </Link>

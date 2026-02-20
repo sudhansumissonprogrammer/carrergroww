@@ -87,8 +87,8 @@ function Register() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#efefef] p-6">
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div className="skeuo-page flex items-center justify-center p-6">
+      <div className="skeuo-surface w-full max-w-md p-8">
 
         <h2 className="text-2xl font-bold text-center mb-6">
           Create your account
@@ -105,7 +105,7 @@ function Register() {
             onChange={handleChange}
             required
             autoComplete="name"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.fullname && <p className="text-red-600 text-sm mt-1">{errors.fullname}</p>} 
 
@@ -117,7 +117,7 @@ function Register() {
             onChange={handleChange}
             required
             autoComplete="email"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>} 
 
@@ -129,7 +129,7 @@ function Register() {
             onChange={handleChange}
             required
             autoComplete="tel"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.phonenumber && <p className="text-red-600 text-sm mt-1">{errors.phonenumber}</p>} 
 
@@ -141,7 +141,7 @@ function Register() {
             onChange={handleChange}
             required
             autoComplete="new-password"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password}</p>} 
 
@@ -153,7 +153,7 @@ function Register() {
                 value="student"
                 checked={form.role === "student"}
                 onChange={handleChange}
-                className="w-4 h-4 text-slate-900"
+                className="skeuo-radio h-4 w-4 text-slate-900"
               />
               <span>Student</span>
             </label>
@@ -164,7 +164,7 @@ function Register() {
                 value="recruiter"
                 checked={form.role === "recruiter"}
                 onChange={handleChange}
-                className="w-4 h-4 text-slate-900"
+                className="skeuo-radio h-4 w-4 text-slate-900"
               />
               <span>Recruiter</span>
             </label>
@@ -172,7 +172,7 @@ function Register() {
 
           <button
             type="submit"
-            className="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition"
+            className="skeuo-btn skeuo-btn-primary w-full py-3 font-semibold text-white"
           >
             Register
           </button>

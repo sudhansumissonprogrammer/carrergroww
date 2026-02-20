@@ -32,7 +32,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#efefef] text-slate-900">
+    <div className="skeuo-page text-slate-900">
       <section className="relative -mt-20 min-h-[68vh] overflow-hidden pt-20 md:min-h-[72vh]">
         <div
           className="absolute inset-0 bg-center bg-cover"
@@ -51,21 +51,21 @@ function Home() {
             Apply to verified jobs from startups to top companies - faster and smarter.
           </p>
 
-          <div className="mt-8 flex w-full max-w-3xl flex-col gap-3 rounded-3xl border border-white/35 bg-white/15 p-5 shadow-[0_8px_32px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:flex-row sm:items-center">
+          <div className="skeuo-banner mt-8 flex w-full max-w-3xl flex-col gap-3 p-5 sm:flex-row sm:items-center">
             <input
-              className="w-full rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white caret-white outline-none placeholder:text-white/80"
+              className="skeuo-input w-full text-slate-900 placeholder:text-slate-500"
               placeholder="Job title or keyword"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
             />
             <input
-              className="w-full rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white caret-white outline-none placeholder:text-white/80 sm:max-w-xs"
+              className="skeuo-input w-full text-slate-900 placeholder:text-slate-500 sm:max-w-xs"
               placeholder="Location or Remote"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             />
             <button
-              className="rounded-2xl bg-slate-900 px-6 py-3 font-semibold transition hover:bg-black sm:shrink-0"
+              className="skeuo-btn skeuo-btn-primary rounded-2xl px-6 py-3 font-semibold sm:shrink-0"
               onClick={handleSearch}
             >
               Search Jobs
@@ -76,20 +76,20 @@ function Home() {
 
       <section className="relative z-10 -mt-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 gap-6 rounded-2xl bg-slate-900 p-8 text-white shadow-xl sm:grid-cols-3">
-            <div className="text-center">
+          <div className="skeuo-surface grid grid-cols-1 gap-6 p-8 text-slate-900 sm:grid-cols-3">
+            <div className="skeuo-card-inset p-4 text-center">
               <h3 className="text-3xl font-bold">10k+</h3>
-              <p className="text-slate-300">Active Job Seekers</p>
+              <p className="skeuo-text-muted">Active Job Seekers</p>
             </div>
 
-            <div className="text-center">
+            <div className="skeuo-card-inset p-4 text-center">
               <h3 className="text-3xl font-bold">500+</h3>
-              <p className="text-slate-300">Hiring Companies</p>
+              <p className="skeuo-text-muted">Hiring Companies</p>
             </div>
 
-            <div className="text-center">
+            <div className="skeuo-card-inset p-4 text-center">
               <h3 className="text-3xl font-bold">Fast</h3>
-              <p className="text-slate-300">Hiring Process</p>
+              <p className="skeuo-text-muted">Hiring Process</p>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ function Home() {
               <button
                 key={item.name}
                 onClick={() => navigate(`/jobs?category=${item.name}`)}
-                className="rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                className="skeuo-card skeuo-card-hover p-5 text-left"
               >
                 <p className="text-lg font-semibold text-slate-900">{item.name}</p>
                 <p className="mt-1 text-sm text-slate-600">{item.jobs}</p>
@@ -125,7 +125,7 @@ function Home() {
           {["Create Profile", "Search Jobs", "Apply Instantly"].map((item) => (
             <div
               key={item}
-              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+              className="skeuo-card skeuo-card-hover p-6"
             >
               <h3 className="text-lg font-semibold">{item}</h3>
             </div>
@@ -138,14 +138,14 @@ function Home() {
           <h2 className="mb-8 text-2xl font-bold">Featured Opportunities</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {featuredRoles.map((job) => (
-              <div key={job.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div key={job.title} className="skeuo-card p-5">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{job.company}</p>
                 <h3 className="mt-2 text-lg font-semibold text-slate-900">{job.title}</h3>
                 <p className="mt-2 text-sm text-slate-600">{job.salary}</p>
                 <p className="text-sm text-slate-500">{job.location}</p>
                 <button
                   onClick={handleSearch}
-                  className="mt-4 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-black"
+                  className="skeuo-btn skeuo-btn-primary mt-4 px-4 py-2 text-sm font-semibold text-white"
                 >
                   Apply now
                 </button>
@@ -155,7 +155,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-12 text-center">
+      <section className="py-12 text-center">
         <p className="mb-8 text-lg font-semibold text-slate-600">Companies Hiring on JobPortal</p>
 
         <div className="mx-auto max-w-5xl overflow-x-auto pb-2">
@@ -175,7 +175,7 @@ function Home() {
             ].map((company) => (
               <div
                 key={company.name}
-                className="flex h-20 w-28 flex-shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-3"
+                className="skeuo-card flex h-20 w-28 flex-shrink-0 items-center justify-center p-3"
               >
                 <img
                   src={company.logo}
@@ -200,7 +200,7 @@ function Home() {
           ].map(([title, text]) => (
             <div
               key={title}
-              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="skeuo-card skeuo-card-hover p-6"
             >
               <h3 className="mb-2 text-lg font-semibold">{title}</h3>
               <p className="text-sm text-slate-600">{text}</p>
@@ -209,7 +209,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-100 py-20 text-center">
+      <section className="py-20 text-center">
         <h2 className="mb-8 text-3xl font-bold">What users say</h2>
 
         <div className="flex flex-wrap justify-center gap-6">
@@ -219,7 +219,7 @@ function Home() {
           ].map((text) => (
             <div
               key={text}
-              className="max-w-xs rounded-xl border border-slate-200 bg-white p-6 italic shadow-sm"
+              className="skeuo-card max-w-xs p-6 italic"
             >
               {text}
             </div>
@@ -228,11 +228,11 @@ function Home() {
       </section>
 
       <section className="px-6 pb-20">
-        <div className="mx-auto max-w-6xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div className="skeuo-surface mx-auto max-w-6xl p-8">
           <h2 className="mb-6 text-2xl font-bold">Quick Answers</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {faqItems.map((item) => (
-              <div key={item.q} className="rounded-xl bg-slate-50 p-4">
+              <div key={item.q} className="skeuo-card-inset p-4">
                 <h3 className="font-semibold text-slate-900">{item.q}</h3>
                 <p className="mt-2 text-sm text-slate-600">{item.a}</p>
               </div>
@@ -241,29 +241,33 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-900 py-20 text-center text-white">
-        <h2 className="mb-4 text-3xl font-bold">Ready to get hired?</h2>
-        <Link to="/register">
-          <button className="rounded-lg bg-white px-8 py-3 text-slate-900 transition hover:bg-slate-100">
-            Create Your Profile
-          </button>
-        </Link>
+      <section className="px-6 pb-12 text-center">
+        <div className="skeuo-surface mx-auto max-w-6xl p-12">
+          <h2 className="mb-4 text-3xl font-bold">Ready to get hired?</h2>
+          <Link to="/register">
+            <button className="skeuo-btn skeuo-btn-primary px-8 py-3 text-white">
+              Create Your Profile
+            </button>
+          </Link>
+        </div>
       </section>
 
-      <section className="grid grid-cols-3 bg-slate-800 py-10 text-center text-white">
-        {[
-          ["10k+", "Users"],
-          ["500+", "Companies"],
-          ["100+", "Cities"],
-        ].map(([num, label]) => (
-          <div key={label}>
-            <h3 className="text-2xl font-bold">{num}</h3>
-            <p className="text-slate-300">{label}</p>
-          </div>
-        ))}
+      <section className="px-6 pb-10">
+        <div className="skeuo-shell mx-auto grid max-w-6xl grid-cols-3 py-10 text-center">
+          {[
+            ["10k+", "Users"],
+            ["500+", "Companies"],
+            ["100+", "Cities"],
+          ].map(([num, label]) => (
+            <div key={label}>
+              <h3 className="text-2xl font-bold">{num}</h3>
+              <p className="text-slate-600">{label}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <footer className="py-4 text-center text-sm text-slate-500">
+      <footer className="pb-8 text-center text-sm text-slate-500">
         (c) 2026 JobPortal - Built for growth
       </footer>
     </div>

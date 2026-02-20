@@ -190,15 +190,15 @@ function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#efefef] p-6">
-      <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div className="skeuo-page flex min-h-screen items-center justify-center p-6">
+      <div className="skeuo-surface w-full max-w-md p-8">
 
         <h2 className="text-2xl font-bold text-center mb-6">
           Login
         </h2>
 
         {errorMessage && (
-          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="status-error mb-4 rounded-lg p-4">
             {errorMessage}
           </div>
         )}
@@ -215,7 +215,7 @@ function Login() {
             onChange={handleChange}
             required
             autoComplete="email"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>} 
 
@@ -227,7 +227,7 @@ function Login() {
             onChange={handleChange}
             required
             autoComplete="new-password"
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="skeuo-input"
           />
           {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password}</p>} 
 
@@ -242,7 +242,7 @@ function Login() {
           </div>
 
           {showForgotPassword && (
-            <div className="p-4 border rounded-lg bg-[#efefef] space-y-3">
+            <div className="skeuo-card-inset space-y-3 p-4">
               <p className="text-sm text-slate-700">
                 {forgotStep === "email" ? "Reset your password" : "Change your password"}
               </p>
@@ -253,7 +253,7 @@ function Login() {
                     placeholder="Enter your registered email"
                     value={forgotEmail}
                     onChange={(e) => setForgotEmail(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+                    className="skeuo-input"
                   />
                 ) : (
                   <>
@@ -265,14 +265,14 @@ function Login() {
                       placeholder="New password"
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
-                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+                      className="skeuo-input"
                     />
                     <input
                       type="password"
                       placeholder="Confirm new password"
                       value={confirmNewPassword}
                       onChange={(e) => setConfirmNewPassword(e.target.value)}
-                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+                      className="skeuo-input"
                     />
                   </>
                 )}
@@ -282,7 +282,7 @@ function Login() {
                   <button
                     type="button"
                     onClick={forgotStep === "email" ? handleForgotPasswordSubmit : handleChangePassword}
-                    className="px-4 py-2 text-sm bg-slate-900 text-white rounded-lg hover:bg-black transition"
+                    className="skeuo-btn skeuo-btn-primary px-4 py-2 text-sm text-white"
                   >
                     {forgotStep === "email" ? "Continue" : "Change Password"}
                   </button>
@@ -296,7 +296,7 @@ function Login() {
                         setNewPassword("");
                         setConfirmNewPassword("");
                       }}
-                      className="px-4 py-2 text-sm bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition"
+                      className="skeuo-btn skeuo-btn-secondary px-4 py-2 text-sm text-slate-700"
                     >
                       Back
                     </button>
@@ -311,7 +311,7 @@ function Login() {
                       setNewPassword("");
                       setConfirmNewPassword("");
                     }}
-                    className="px-4 py-2 text-sm bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition"
+                    className="skeuo-btn skeuo-btn-secondary px-4 py-2 text-sm text-slate-700"
                   >
                     Cancel
                   </button>
@@ -328,7 +328,7 @@ function Login() {
                 value="student"
                 checked={form.role === "student"}
                 onChange={handleChange}
-                className="w-4 h-4 text-slate-900"
+                className="skeuo-radio h-4 w-4 text-slate-900"
               />
               <span>Student</span>
             </label>
@@ -339,7 +339,7 @@ function Login() {
                 value="recruiter"
                 checked={form.role === "recruiter"}
                 onChange={handleChange}
-                className="w-4 h-4 text-slate-900"
+                className="skeuo-radio h-4 w-4 text-slate-900"
               />
               <span>Recruiter</span>
             </label>
@@ -347,15 +347,15 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition"
+            className="skeuo-btn skeuo-btn-primary w-full py-3 font-semibold text-white"
           >
             Login
           </button>
         </form>
 
         <div className="mt-4 flex gap-2">
-          <button onClick={fillDemoStudent} className="flex-1 rounded bg-gray-200 py-2 text-xs hover:bg-gray-300">Demo Student</button>
-          <button onClick={fillDemoRecruiter} className="flex-1 rounded bg-gray-200 py-2 text-xs hover:bg-gray-300">Demo Recruiter</button>
+          <button onClick={fillDemoStudent} className="skeuo-btn skeuo-btn-secondary flex-1 py-2 text-xs">Demo Student</button>
+          <button onClick={fillDemoRecruiter} className="skeuo-btn skeuo-btn-secondary flex-1 py-2 text-xs">Demo Recruiter</button>
         </div>
 
         {/* 🔗 Back to Home (since no login page yet) */}
