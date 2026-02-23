@@ -1,42 +1,23 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo } from "react";
 
 const ThemeContext = createContext(null);
-
-const STORAGE_KEY = "career-grow-theme";
-
-function resolveInitialTheme() {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  const savedTheme = window.localStorage.getItem(STORAGE_KEY);
-  if (savedTheme === "dark" || savedTheme === "light") {
-    return savedTheme;
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
+const LIGHT_THEME = "light";
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(resolveInitialTheme);
-
   useEffect(() => {
     const root = document.documentElement;
-    root.setAttribute("data-theme", theme);
-    root.style.colorScheme = theme;
-    window.localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+    root.setAttribute("data-theme", LIGHT_THEME);
+    root.style.colorScheme = LIGHT_THEME;
+  }, []);
 
   const value = useMemo(
     () => ({
-      theme,
-      isDark: theme === "dark",
-      setTheme,
-      toggleTheme: () => {
-        setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
-      },
+      theme: LIGHT_THEME,
+      isDark: false,
+      setTheme: () => {},
+      toggleTheme: () => {},
     }),
-    [theme],
+    [],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

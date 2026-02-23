@@ -32,7 +32,7 @@ function Home() {
   };
 
   return (
-    <div className="skeuo-page text-slate-900">
+    <div className="skeuo-page home-page text-slate-900">
       <section className="relative -mt-20 min-h-[68vh] overflow-hidden pt-20 md:min-h-[72vh]">
         <div
           className="absolute inset-0 bg-center bg-cover"
